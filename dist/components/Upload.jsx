@@ -6,10 +6,10 @@ export default function Upload() {
     const [buttonClass, setButtonClass] = useState("pasteButtonInactive");
 
     useEffect(() => {
-        console.log("hadlePaste launched");
         const screenshotContainer = document.getElementById('screenshot-container');
 
         const handlePaste = (e) => {
+            console.log("screenshot pasted");
             const items = e.clipboardData.items;
             console.log(items);
             
@@ -52,7 +52,10 @@ export default function Upload() {
             setButtonClass("pasteButtonActive");
         } else if (pasted) {
             setPasted(false);
-            setButtonClass("pasteButtonInactive");
+            setButtonClass("pasteButtonActive");
+
+            const screenshotContainer = document.getElementById("screenshot-container");
+            screenshotContainer.innerHTML = "";
         }
     }        
 
@@ -73,7 +76,3 @@ export default function Upload() {
         </>
     )
 }
-
-
-//{ pasted ? "" : <img src="./dist/assets/file-new-icon.svg" className="w-16 h-16" />}
-// ${ clicked ? "pasteButtonActive" : "pasteButtonInactive"}`
