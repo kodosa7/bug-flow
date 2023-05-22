@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function Upload() {
     const [clicked, setClicked] = useState(false);
     const [pasted, setPasted] = useState(false);
-    const [buttonClass, setButtonClass] = useState("pasteButtonInactive");
+    const [buttonClass, setButtonClass] = useState("pasteButtonActive");
 
     useEffect(() => {
         const screenshotContainer = document.getElementById('screenshot-container');
@@ -47,16 +47,34 @@ export default function Upload() {
     }, [pasted]);
 
     const handleClick = () => {
-        if(!clicked) {
+        // initial state (not clicked and not pasted)
+        if(!clicked && !pasted) {
             setClicked(true);
-            setButtonClass("pasteButtonActive");
-        } else if (pasted) {
+            setButtonClass("pasteButtonInactive");
+            console.log("#1 setting to waiting for pasted");
+        }
+
+        // step #2 - cliked and not pasted
+        if (clicked && !pasted) {
+            setClicked(true);
+            console.log("#2 just sclicking again but not pasted")
+        }
+
+        if (pasted) {
             setPasted(false);
+            setClicked(true);
             setButtonClass("pasteButtonActive");
 
             const screenshotContainer = document.getElementById("screenshot-container");
             screenshotContainer.innerHTML = "";
+
+            console.log("clicked && !pasted");
         }
+        // if (clicked && pasted) {
+        //     setClicked(false);
+        //     setButtonClass("pasteButtonPasted");
+        // }
+
     }        
 
     return (
@@ -64,15 +82,25 @@ export default function Upload() {
             <button
                 type="button"
                 className={
-                    `font-bold ml-5 mb-10 mr-5 w-max h-max p-5 bg-emerald-500 rounded-lg shadow-xl
+                    `font-bold ml-5 mb-10 mr-5 mt-5 w-max h-max p-5 rounded-xl
                     ${buttonClass}`
                 }
-                // onClick={handlePaste}
                 id="screenshot-container"
                 onClick={handleClick}
             >
-                {!pasted && <img src="./dist/assets/file-new-icon.svg" className="w-16 h-16" />}
+                {!pasted && (
+                    <>
+                        <h4 className="text-gray-400">Click to paste</h4>
+                        <img src="./dist/assets/paste.svg" className="add-icon w-16 h-16" />
+                    </>
+                    )
+                }
             </button>
         </>
     )
 }
+
+
+
+
+
