@@ -1,106 +1,69 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from 'react';
 
-export default function Upload() {
-    const [clicked, setClicked] = useState(false);
-    const [pasted, setPasted] = useState(false);
-    const [buttonClass, setButtonClass] = useState("pasteButtonActive");
+const ImagePasteButton = () => {
+  const [image, setImage] = useState(null);
+  const [showDeleteButton, setShowDeleteButton] = useState(false);
+  const [buttonClass, setButtonClass] = useState("pasteButtonInactive");
+  const contentEditableRef = useRef(null);
 
-    useEffect(() => {
-        const screenshotContainer = document.getElementById('screenshot-container');
+  const handlePaste = (e) => {
+    const clipboardData = e.clipboardData || window.clipboardData;
+    const items = clipboardData.items;
 
-        const handlePaste = (e) => {
-            console.log("screenshot pasted");
-            const items = e.clipboardData.items;
-            console.log(items);
-            
-            for (let i = 0; i < items.length; i++) {
-                const item = items[i];
-                if (item.type.indexOf('image') === 0) {
-                    const blob = item.getAsFile();
-                    const imageUrl = URL.createObjectURL(blob);
-                    const imageElement = document.createElement('img');
-                    imageElement.src = imageUrl;
-                    screenshotContainer.appendChild(imageElement);
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.type.indexOf('image') !== -1) {
+        const file = item.getAsFile();
+        setImage(URL.createObjectURL(file));
+        setShowDeleteButton(true);
+        break;
+      } else {
+        break;
+      }
+    }
+  };
+  
+  const handleDelete = () => {
+    setImage(null);
+    setShowDeleteButton(false);
+  };
 
-                    console.log(imageElement);
+  const handleClick = () => {
+    if (contentEditableRef.current) {
+        const pasteBtn = document.getElementsByClassName("pasteButtonActive");
+        pasteBtn.innerHTML = `<div className="font-bold">Paste now</div>`;
+        setButtonClass("pasteButtonActive");
+    }
+  };
 
-                    setPasted(true);
-                    setButtonClass("pasteButtonInactive");
-                    break;
-                }
-            }
-        };
-
-        const removePasteListener = () => {
-            screenshotContainer.removeEventListener("paste", handlePaste);
-        };
-        
-        if (!pasted) {
-            screenshotContainer.addEventListener("paste", handlePaste);
-        } else {
-            removePasteListener();
-        }
-    
-        return () => {
-            removePasteListener();
-        };
-    }, [pasted]);
-
-    const handleClick = () => {
-        // initial state (not clicked and not pasted)
-        if(!clicked && !pasted) {
-            setClicked(true);
-            setButtonClass("pasteButtonInactive");
-            console.log("#1 setting to waiting for pasted");
-        }
-
-        // step #2 - cliked and not pasted
-        if (clicked && !pasted) {
-            setClicked(true);
-            console.log("#2 just sclicking again but not pasted")
-        }
-
-        if (pasted) {
-            setPasted(false);
-            setClicked(true);
-            setButtonClass("pasteButtonActive");
-
-            const screenshotContainer = document.getElementById("screenshot-container");
-            screenshotContainer.innerHTML = "";
-
-            console.log("clicked && !pasted");
-        }
-        // if (clicked && pasted) {
-        //     setClicked(false);
-        //     setButtonClass("pasteButtonPasted");
-        // }
-
-    }        
-
-    return (
-        <>
+  return (
+    <div>
+      {image ? (
+        <div className="relative max-w-full">
+          <img src={image} alt="Pasted image" className="max-w-full h-auto m-5 rounded-xl" />
+          {showDeleteButton && (
             <button
-                type="button"
-                className={
-                    `font-bold ml-5 mb-10 mr-5 mt-5 w-max h-max p-5 rounded-xl
-                    ${buttonClass}`
-                }
-                id="screenshot-container"
-                onClick={handleClick}
+              className="absolute top-5 right-10 z-10 p-3 rounded-full bg-red-600 text-white"
+              onClick={handleDelete}
             >
-                {!pasted && (
-                    <>
-                        <h4 className="text-gray-400">Click to paste</h4>
-                        <img src="./dist/assets/paste.svg" className="add-icon w-16 h-16" />
-                    </>
-                    )
-                }
+              <img src="./dist/assets/trash.svg" className="trash-icon w-8 h-8" />
             </button>
-        </>
-    )
-}
+          )}
+        </div>
+      ) : (
+        <div
+          contentEditable
+          ref={contentEditableRef}
+          className={`${buttonClass} text-gray-400 p-6 m-5 rounded-xl shadow-lg bg-slate-300 font-semibold flex flex-col items-center cursor-pointer`}
+          onPaste={handlePaste}
+          onClick={handleClick}
+        >
+          <img src="./dist/assets/paste.svg" className="add-icon w-16 h-16" />
+          Click to Paste
+        </div>
+      )}
+    </div>
+  );
+};
 
-
-
-
-
+export default ImagePasteButton;
