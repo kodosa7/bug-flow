@@ -1,38 +1,23 @@
-import React, { useEffect, useState } from "react"
-import Upload from "./Upload"
-import Counter from "./Counter"
+import React, { useEffect, useState } from "react";
+import Upload from "./Upload";
+import Counter from "./Counter";
+import Buttons from "./Buttons";
 
 
 export default function Main() {
+    const [counter, setCounter] = useState(1);
 
+    const handleAddNextStep = () => {
+        setCounter((prevCounter) => prevCounter + 1);
+    };
 
     return (
         <>
-        <div className="item-container flex">
-            <Counter />
-            <Upload />
-        </div>
-        <textarea
-            className="textarea data ml-10 text-gray-950"
-            id="base64MD"
-            cols="150"
-            rows="4"
-            placeholder="Type your description here">
-        </textarea>
-
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded ml-10">
-            Add/Modify text caption
-        </button>
-
-        <br />
-
-        <button className="add-next-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded ml-10">
-            Add Next Step
-        </button>
-
-        <button className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 border border-green-700 rounded m-10">
-            Export BugFlow
-        </button>
+            <div className="item-container flex">
+                <Counter counter={ counter }/>
+                <Upload />
+            </div>
+            <Buttons handleAddNextStep={ handleAddNextStep }/>
         </>
     )
 }

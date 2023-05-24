@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 
-export default function Footer() {
-    const [counter, setCounter] = useState(1)
+export default function Counter({ counter }) {
+    // const [counter, setCounter] = useState(1)
 
     return (
         <>

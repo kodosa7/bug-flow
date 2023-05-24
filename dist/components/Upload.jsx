@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import Comment from "./Comment";
 
 const ImagePasteButton = () => {
   const [image, setImage] = useState(null);
@@ -41,6 +42,7 @@ const ImagePasteButton = () => {
       {image ? (
         <div className="relative max-w-full">
           <img src={image} alt="Pasted image" className="max-w-full h-auto m-5 rounded-xl" />
+          <Comment />
           {showDeleteButton && (
             <button
               className="absolute top-5 right-10 z-10 p-3 rounded-full bg-red-600 text-white"
