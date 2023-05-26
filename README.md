@@ -9,8 +9,8 @@ of bugs they need to share with someone else, e.g. to request help.
 The app is waiting for copy/pasted image or screenshot,  
 allows adding text commentary, everything in steps. It's up to the user  
 how many steps they make. When the user decides their bug flow has finished,  
-added screenshots and text captions are processed to export as an image and automatically  
-copied back to the clipboard as one big workflow, ready to share.
+added screenshots and text captions are processed foe export as an image automatically  
+copied to the clipboard as one big workflow, being ready to share.
 
 ## Resources
 - ReactJS and Tailwind, npm
