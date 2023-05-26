@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function Buttons({ handleAddNextStep }) {
+export default function Buttons({ handleAddNextStep, isImagePasted }) {
+  if (!isImagePasted) {
+    return null; // If image is not pasted, don't render the buttons
+  }
+
   return (
     <>
       <button
@@ -18,3 +22,4 @@ export default function Buttons({ handleAddNextStep }) {
     </>
   );
 }
+

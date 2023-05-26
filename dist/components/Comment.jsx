@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Buttons from "./Buttons";
 
 export default function Comment() {
   const [commentText, setCommentText] = useState("");
@@ -41,13 +40,12 @@ export default function Comment() {
         cols="100"
         rows="4"
         maxLength="1000"
-        placeholder="Type your commentary here, submit by Enter, or submit blank to delete text. Max. 1000 characters."
+        placeholder="Comment here, submit by Enter, or submit blank to delete added comment (Max. 1000 characters)"
         value={commentText}
         onChange={handleTextareaChange}
         onKeyDown={handleKeyDown}
       ></textarea>
       <br />
-      <Buttons />
     </>
   );
 }

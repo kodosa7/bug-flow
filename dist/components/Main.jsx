@@ -5,9 +5,14 @@ import Buttons from "./Buttons";
 
 export default function Main() {
   const [counters, setCounters] = useState([1]);
+  const [isImagePasted, setIsImagePasted] = useState(false);
 
   const handleAddNextStep = () => {
     setCounters((prevCounters) => [...prevCounters, prevCounters.length + 1]);
+  };
+
+  const handleImagePasted = () => {
+    setIsImagePasted(true);
   };
 
   return (
@@ -15,10 +20,16 @@ export default function Main() {
       {counters.map((counter) => (
         <div key={counter} className="item-container flex">
           <Counter counter={counter} />
-          <Upload />
+          <Upload
+            handleAddNextStep={handleAddNextStep}
+            handleImagePasted={handleImagePasted}
+            isImagePasted={isImagePasted}
+          />
         </div>
       ))}
-      <Buttons handleAddNextStep={handleAddNextStep} />
+      {isImagePasted && (
+        <Buttons handleAddNextStep={handleAddNextStep} isImagePasted={isImagePasted} />
+      )}
     </>
   );
 }

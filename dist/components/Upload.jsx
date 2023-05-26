@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import Comment from "./Comment";
 
-const ImagePasteButton = () => {
+const Upload = ({ handleAddNextStep, handleImagePasted, isImagePasted }) => {
   const [image, setImage] = useState(null);
   const [showDeleteButton, setShowDeleteButton] = useState(false);
   const [buttonClass, setButtonClass] = useState("pasteButtonInactive");
@@ -17,13 +17,14 @@ const ImagePasteButton = () => {
         const file = item.getAsFile();
         setImage(URL.createObjectURL(file));
         setShowDeleteButton(true);
+        handleImagePasted(); // Notify Main component that an image is pasted
         break;
       } else {
         break;
       }
     }
   };
-  
+
   const handleDelete = () => {
     setImage(null);
     setShowDeleteButton(false);
@@ -68,4 +69,4 @@ const ImagePasteButton = () => {
   );
 };
 
-export default ImagePasteButton;
+export default Upload;
