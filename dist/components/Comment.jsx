@@ -28,14 +28,14 @@ export default function Comment() {
   };
 
   return (
-    <>
+    <div>
       {submittedComment && (
-        <div className="comment-container m-5 p-5 rounded-xl font-semibold text-xl bg-emerald-800 text-emerald-50 w-11/12 h-auto">
+        <div className="m-5 p-5 rounded-xl font-semibold text-xl bg-emerald-800 text-emerald-50 w-11/12 h-auto">
           {submittedComment}
         </div>
       )}
       <textarea
-        className="textarea data ml-5 text-gray-950"
+        className="data ml-5 text-gray-950"
         id="base64MD"
         cols="100"
         rows="4"
@@ -45,7 +45,6 @@ export default function Comment() {
         onChange={handleTextareaChange}
         onKeyDown={handleKeyDown}
       ></textarea>
-      <br />
-    </>
+    </div>
   );
 }

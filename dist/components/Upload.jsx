@@ -39,25 +39,35 @@ const Upload = ({ handleAddNextStep, handleImagePasted, isImagePasted }) => {
   };
 
   return (
-    <div>
-      {image ? (
-        <div className="relative max-w-full">
+    <>
+
+      {image ?
+       (
+        <>
+        <div className="upload-container relative max-w-full">
           <img src={image} alt="Pasted image" className="max-w-full h-auto m-5 rounded-xl" />
+        </div>
+        <div className="comment-container">
           <Comment />
+        </div>
+        <div className="delete-button">
           {showDeleteButton && (
             <button
-              className="absolute top-5 right-10 z-10 p-3 rounded-full bg-red-600 text-white"
+              className="top-5 right-10 z-10 p-3 rounded-full bg-red-600 text-white"
               onClick={handleDelete}
             >
               <img src="./dist/assets/trash.svg" className="trash-icon w-8 h-8" />
             </button>
           )}
         </div>
+        </>
+
       ) : (
+
         <div
           contentEditable
           ref={contentEditableRef}
-          className={`${buttonClass} text-gray-400 p-6 m-5 rounded-xl shadow-lg bg-slate-300 font-semibold flex flex-col items-center cursor-pointer`}
+          className={`${buttonClass} upload-container text-gray-400 p-6 m-5 rounded-xl shadow-lg bg-slate-300 font-semibold flex flex-col items-center cursor-pointer`}
           onPaste={handlePaste}
           onClick={handleClick}
         >
@@ -65,7 +75,9 @@ const Upload = ({ handleAddNextStep, handleImagePasted, isImagePasted }) => {
           Click to Paste
         </div>
       )}
-    </div>
+
+    </>
+
   );
 };
 
