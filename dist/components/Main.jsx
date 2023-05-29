@@ -27,32 +27,35 @@ export default function Main() {
       });
     });
   };
-
+  
   const handleDeleteStep = (stepId) => {
     setSteps((prevSteps) => {
       const remainingSteps = prevSteps.filter((step) => step.id !== stepId);
   
       if (remainingSteps.length === 0) {
-        // If all steps are deleted, reset the first step
-        return [{ id: 1, showButtons: false }];
+        // If all steps are deleted, remove all steps
+        return [];
       } else {
         const updatedSteps = remainingSteps.map((step, index) => {
-          if (index === 0) {
-            // Show the "Add Next Step" button in the first remaining step
+          if (index === remainingSteps.length - 1) {
+            // Show the "Add Next Step" button in the last remaining step
             return {
-              id: step.id,
+              ...step,
               showButtons: true
             };
           }
-          return step;
+          return {
+            ...step,
+            id: index + 1,
+            showButtons: step.showButtons
+          };
         });
+  
         return updatedSteps;
       }
     });
   };
-  
-  
-
+ 
   const handleDeleteImage = (stepId) => {
     setSteps((prevSteps) => {
       return prevSteps.map((step) => {
@@ -69,7 +72,7 @@ export default function Main() {
 
   const handleAddNextStepClick = (stepId) => {
     setSteps((prevSteps) => {
-      return prevSteps.map((step) => {
+      const updatedSteps = prevSteps.map((step) => {
         if (step.id === stepId) {
           return {
             ...step,
@@ -78,8 +81,14 @@ export default function Main() {
         }
         return step;
       });
+  
+      const newStep = {
+        id: updatedSteps.length + 1,
+        showButtons: false
+      };
+  
+      return [...updatedSteps, newStep];
     });
-    handleAddNextStep();
   };
 
   return (
@@ -101,7 +110,8 @@ export default function Main() {
             handleDeleteImage={() => handleDeleteImage(step.id)}
             isImagePasted={step.showButtons}
           />
-          {step.showButtons && (
+
+          {step.showButtons && steps.indexOf(step) === steps.length - 1 && (
             <div className="buttons-container">
               <Buttons
                 handleAddNextStep={() => handleAddNextStepClick(step.id)}
@@ -109,6 +119,7 @@ export default function Main() {
               />
             </div>
           )}
+
         </div>
       ))}
     </div>
