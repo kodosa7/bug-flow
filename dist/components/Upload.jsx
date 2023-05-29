@@ -1,9 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 import Comment from "./Comment";
 
-const Upload = ({ handleAddNextStep, handleImagePasted, isImagePasted }) => {
+const Upload = ({ handleAddNextStep, handleImagePasted, handleDeleteImage, isImagePasted }) => {
   const [image, setImage] = useState(null);
-  const [showDeleteButton, setShowDeleteButton] = useState(false);
   const [buttonClass, setButtonClass] = useState("pasteButtonInactive");
   const contentEditableRef = useRef(null);
 
@@ -13,10 +12,9 @@ const Upload = ({ handleAddNextStep, handleImagePasted, isImagePasted }) => {
 
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
-      if (item.type.indexOf('image') !== -1) {
+      if (item.type.indexOf("image") !== -1) {
         const file = item.getAsFile();
         setImage(URL.createObjectURL(file));
-        setShowDeleteButton(true);
         handleImagePasted(); // Notify Main component that an image is pasted
         break;
       } else {
@@ -25,45 +23,26 @@ const Upload = ({ handleAddNextStep, handleImagePasted, isImagePasted }) => {
     }
   };
 
-  const handleDelete = () => {
-    setImage(null);
-    setShowDeleteButton(false);
-  };
-
   const handleClick = () => {
     if (contentEditableRef.current) {
-        const pasteBtn = document.getElementsByClassName("pasteButtonActive");
-        pasteBtn.innerHTML = `<div className="font-bold">Paste now</div>`;
-        setButtonClass("pasteButtonActive");
+      const pasteBtn = document.getElementsByClassName("pasteButtonActive");
+      pasteBtn.innerHTML = `<div className="font-bold">Paste now</div>`;
+      setButtonClass("pasteButtonActive");
     }
   };
 
   return (
     <>
-
-      {image ?
-       (
+      {image ? (
         <>
-        <div className="upload-container relative max-w-full">
-          <img src={image} alt="Pasted image" className="max-w-full h-auto mt-5 mr-5 rounded-xl" />
-        </div>
-        <div className="comment-container">
-          <Comment />
-        </div>
-        <div className="delete-button">
-          {showDeleteButton && (
-            <button
-              className="top-5 right-10 z-10 p-3 rounded-full bg-red-600 text-white"
-              onClick={handleDelete}
-            >
-              <img src="./dist/assets/trash.svg" className="trash-icon w-8 h-8" />
-            </button>
-          )}
-        </div>
+          <div className="upload-container relative max-w-full">
+            <img src={image} alt="Pasted image" className="max-w-full h-auto mt-5 mr-5 rounded-xl" />
+          </div>
+          <div className="comment-container">
+            <Comment />
+          </div>
         </>
-
       ) : (
-
         <div
           contentEditable
           ref={contentEditableRef}
@@ -75,9 +54,7 @@ const Upload = ({ handleAddNextStep, handleImagePasted, isImagePasted }) => {
           Click to Paste
         </div>
       )}
-
     </>
-
   );
 };
 

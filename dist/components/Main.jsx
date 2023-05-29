@@ -4,39 +4,109 @@ import Counter from "./Counter";
 import Buttons from "./Buttons";
 
 export default function Main() {
-  const [counters, setCounters] = useState([1]);
-  const [buttonVisibility, setButtonVisibility] = useState([false]);
-  const [activeStep, setActiveStep] = useState(1);
+  const [steps, setSteps] = useState([{ id: 1, showButtons: false }]);
 
   const handleAddNextStep = () => {
-    setCounters((prevCounters) => [...prevCounters, prevCounters.length + 1]);
-    setButtonVisibility((prevVisibility) => [...prevVisibility, false]);
-    setActiveStep((prevStep) => prevStep + 1);
+    const newStep = {
+      id: steps.length + 1,
+      showButtons: false
+    };
+    setSteps((prevSteps) => [...prevSteps, newStep]);
   };
 
-  const handleImagePasted = (index) => {
-    setButtonVisibility((prevVisibility) => {
-      const newVisibility = [...prevVisibility];
-      newVisibility[index] = true;
-      return newVisibility;
+  const handleImagePasted = (stepId) => {
+    setSteps((prevSteps) => {
+      return prevSteps.map((step) => {
+        if (step.id === stepId) {
+          return {
+            ...step,
+            showButtons: true
+          };
+        }
+        return step;
+      });
     });
+  };
+
+  const handleDeleteStep = (stepId) => {
+    setSteps((prevSteps) => {
+      const remainingSteps = prevSteps.filter((step) => step.id !== stepId);
+  
+      if (remainingSteps.length === 0) {
+        // If all steps are deleted, reset the first step
+        return [{ id: 1, showButtons: false }];
+      } else {
+        const updatedSteps = remainingSteps.map((step, index) => {
+          if (index === 0) {
+            // Show the "Add Next Step" button in the first remaining step
+            return {
+              id: step.id,
+              showButtons: true
+            };
+          }
+          return step;
+        });
+        return updatedSteps;
+      }
+    });
+  };
+  
+  
+
+  const handleDeleteImage = (stepId) => {
+    setSteps((prevSteps) => {
+      return prevSteps.map((step) => {
+        if (step.id === stepId) {
+          return {
+            ...step,
+            showButtons: false
+          };
+        }
+        return step;
+      });
+    });
+  };
+
+  const handleAddNextStepClick = (stepId) => {
+    setSteps((prevSteps) => {
+      return prevSteps.map((step) => {
+        if (step.id === stepId) {
+          return {
+            ...step,
+            showButtons: false
+          };
+        }
+        return step;
+      });
+    });
+    handleAddNextStep();
   };
 
   return (
     <div className="border-4 border-gray-600">
-      {counters.map((counter, index) => (
-        <div key={counter} className="main-container border-4 border-red-300">
+      {steps.map((step, index) => (
+        <div key={step.id} className="main-container border-4 border-red-300">
           <div className="counter-container">
-            <Counter counter={counter} />
+            <Counter counter={index + 1} />
+            <button
+              className="delete-button p-3 ml-10 bg-red-600 text-gray-50 rounded-xl shadow-xl"
+              onClick={() => handleDeleteStep(step.id)}
+            >
+              Remove step
+            </button>
           </div>
           <Upload
-            handleAddNextStep={handleAddNextStep}
-            handleImagePasted={() => handleImagePasted(index)}
-            isImagePasted={buttonVisibility[index]}
+            handleAddNextStep={() => handleAddNextStepClick(step.id)}
+            handleImagePasted={() => handleImagePasted(step.id)}
+            handleDeleteImage={() => handleDeleteImage(step.id)}
+            isImagePasted={step.showButtons}
           />
-          {activeStep === index + 1 && buttonVisibility[index] && (
+          {step.showButtons && (
             <div className="buttons-container">
-              <Buttons handleAddNextStep={handleAddNextStep} isImagePasted={buttonVisibility[index]} />
+              <Buttons
+                handleAddNextStep={() => handleAddNextStepClick(step.id)}
+                isImagePasted={step.showButtons}
+              />
             </div>
           )}
         </div>
@@ -44,4 +114,3 @@ export default function Main() {
     </div>
   );
 }
-
