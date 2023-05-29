@@ -45,7 +45,7 @@ const Upload = ({ handleAddNextStep, handleImagePasted, isImagePasted }) => {
        (
         <>
         <div className="upload-container relative max-w-full">
-          <img src={image} alt="Pasted image" className="max-w-full h-auto m-5 rounded-xl" />
+          <img src={image} alt="Pasted image" className="max-w-full h-auto mt-5 mr-5 rounded-xl" />
         </div>
         <div className="comment-container">
           <Comment />
@@ -67,7 +67,7 @@ const Upload = ({ handleAddNextStep, handleImagePasted, isImagePasted }) => {
         <div
           contentEditable
           ref={contentEditableRef}
-          className={`${buttonClass} upload-container text-gray-400 p-6 m-5 rounded-xl shadow-lg bg-slate-300 font-semibold flex flex-col items-center cursor-pointer`}
+          className={`${buttonClass} upload-container text-gray-400 p-6 mt-5 mb-5 rounded-xl shadow-lg bg-slate-300 font-semibold flex flex-col items-center cursor-pointer`}
           onPaste={handlePaste}
           onClick={handleClick}
         >

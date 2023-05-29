@@ -30,15 +30,16 @@ export default function Comment() {
   return (
     <div>
       {submittedComment && (
-        <div className="m-5 p-5 rounded-xl font-semibold text-xl bg-emerald-800 text-emerald-50 w-11/12 h-auto">
+        <div className="text-output mr-5 mb-5 p-5 rounded-xl font-semibold text-xl font-sans bg-emerald-800 text-emerald-50 w-11/12 h-auto">
           {submittedComment}
         </div>
       )}
       <textarea
-        className="data ml-5 text-gray-950"
+        className="text-input data text-gray-950 rounded-xl p-5 resize-none font-normal text-xl font-sans"
         id="base64MD"
-        cols="100"
-        rows="4"
+
+        // cols="100"
+        // rows="4"
         maxLength="1000"
         placeholder="Comment here, submit by Enter, or submit blank to delete added comment (Max. 1000 characters)"
         value={commentText}
