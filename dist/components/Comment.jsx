@@ -35,12 +35,12 @@ export default function Comment() {
         </div>
       )}
       <textarea
-        className="text-input data bg-gray-700 text-gray-400 rounded p-3 resize-none font-normal text-lg font-sans shadow-lg"
+        className="text-input data bg-gray-700 text-gray-400 placeholder-gray-600 rounded p-3 resize-none font-normal text-lg font-sans shadow-lg border-none outline-none"
         id="base64MD"
         // cols="100"
-        // rows="4"
+        rows="1"
         maxLength="1000"
-        placeholder="Comment here, submit by Enter. Submit blank to remove. Max. 1000 chars"
+        placeholder="Text comment..."
         value={commentText}
         onChange={handleTextareaChange}
         onKeyDown={handleKeyDown}
