@@ -5,16 +5,12 @@ import Header from "./components/Header"
 import Main from "./components/Main"
 import Footer from "./components/Footer"
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="bg-emerald-200">
+    <div className="bg-gray-900 p-10 font-raleway">
       <Header />
       <Main />
       <Footer />
     </div>
   )
 }
-
-export default App

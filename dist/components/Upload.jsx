@@ -36,7 +36,7 @@ const Upload = ({ handleAddNextStep, handleImagePasted, handleDeleteImage, isIma
       {image ? (
         <>
           <div className="upload-container relative max-w-full">
-            <img src={image} alt="Pasted image" className="max-w-full h-auto mt-5 mr-5 rounded-xl" />
+            <img src={image} alt="Pasted image" className="max-w-full h-auto mt-5 mr-5 rounded shadow-lg" />
           </div>
           <div className="comment-container">
             <Comment />
@@ -46,7 +46,7 @@ const Upload = ({ handleAddNextStep, handleImagePasted, handleDeleteImage, isIma
         <div
           contentEditable
           ref={contentEditableRef}
-          className={`${buttonClass} upload-container text-gray-400 p-6 mt-5 mb-5 rounded-xl shadow-lg bg-slate-300 font-semibold flex flex-col items-center cursor-pointer`}
+          className={`${buttonClass} h-max upload-container text-gray-400 p-6 mt-5 mb-5 rounded shadow-lg bg-slate-300 font-semibold flex flex-col items-center cursor-pointer`}
           onPaste={handlePaste}
           onClick={handleClick}
         >

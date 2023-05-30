@@ -1,3 +1,7 @@
+body {
+    background-color: #000;
+}
+
 #screenshot-container {
     border: 4px dashed #a0a0a0;
     display: flex;

@@ -92,13 +92,13 @@ export default function Main() {
   };
 
   return (
-    <div className="border-4 border-gray-600">
+    <div className="">
       {steps.map((step, index) => (
-        <div key={step.id} className="main-container border-4 border-red-300">
+        <div key={step.id} className="main-container bg-gray-800 mb-5 rounded">
           <div className="counter-container">
             <Counter counter={index + 1} />
             <button
-              className="delete-button p-3 ml-10 bg-red-600 text-gray-50 rounded-xl shadow-xl"
+              className="delete-button py-2 px-4 ml-10 bg-gray-900 text-gray-400 hover:bg-gray-700 font-bold rounded shadow-xl"
               onClick={() => handleDeleteStep(step.id)}
             >
               Remove step

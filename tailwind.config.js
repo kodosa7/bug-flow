@@ -4,8 +4,14 @@ module.exports = {
     "./dist/**/*.{js,jsx,ts,tsx,html}",
   ],
   theme: {
-    extend: {},
+    // colors: {
+    // },
+    extend: {
+     fontFamily: {
+        "martel": ["Martel Sans", "sans-serif"],
+        "raleway": ["Raleway", "sans-serif"],
+      }
+    }
   },
   plugins: [],
 }
-
