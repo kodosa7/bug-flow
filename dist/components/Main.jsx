@@ -3,8 +3,10 @@ import Upload from "./Upload";
 import Counter from "./Counter";
 import Buttons from "./Buttons";
 
+
 export default function Main() {
   const [steps, setSteps] = useState([{ id: 1, showButtons: false }]);
+
 
   const handleAddNextStep = () => {
     const newStep = {
@@ -97,12 +99,14 @@ export default function Main() {
         <div key={step.id} className="main-container bg-gray-800 mb-5 rounded">
           <div className="counter-container">
             <Counter counter={index + 1} />
+            
             <button
-              className="delete-button py-2 px-4 ml-10 bg-gray-900 text-gray-400 hover:bg-gray-700 font-bold rounded shadow-xl"
+              className="delete-button button-animation py-2 px-4 ml-10 bg-gray-900 text-gray-400 hover:bg-gray-700 transition-all duration-75 font-bold rounded shadow-xl"
               onClick={() => handleDeleteStep(step.id)}
             >
               Remove step
             </button>
+            
           </div>
           <Upload
             handleAddNextStep={() => handleAddNextStepClick(step.id)}
