@@ -1,5 +1,5 @@
 body {
-    background-color: #000;
+    background-color: #111827;
 }
 
 #screenshot-container {
@@ -70,10 +70,44 @@ img {
 
 .buttons-container {
     grid-area: buttons-container;
+    display: flex;
+    flex-direction: row;
 }
 
 .text-input,
 .text-output {
     width: 97.8%;
     height: auto;
+}
+
+.button-animation:active {
+    transform: translateY(2px);
+}
+
+
+
+@keyframes moveUpAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+}
+  
+.copied-text {
+    position: relative;
+    height: 0;
+    font-weight: 900;
+    font-size: larger;
+    left: 4.5rem;
+    animation: moveUpAnimation .75s ease-in-out;
+    animation-iteration-count: 1;
+    color: #fff;
 }
