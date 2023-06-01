@@ -30,20 +30,19 @@ export default function Comment() {
   return (
     <div>
       {submittedComment && (
-        <div className="text-output mr-5 mb-3 p-3 rounded font-semibold text-lg font-sans bg-gray-900 text-gray-200 w-11/12 h-auto shadow-lg">
+        <div className="text-output mr-5 mb-3 p-3 rounded font-semibold text-lg font-sans bg-gray-900 text-gray-200 w-11/12 shadow-lg">
           {submittedComment}
         </div>
       )}
       <textarea
-        className="text-input data bg-gray-700 text-gray-400 placeholder-gray-600 rounded p-3 resize-none font-normal text-lg font-sans shadow-lg border-none outline-none"
-        id="base64MD"
-        // cols="100"
+        className="text-input data bg-gray-700 text-gray-400 placeholder-gray-600 rounded p-3 resize-none font-normal text-lg font-sans shadow-lg border-none outline-none w-11/12"
         rows="1"
         maxLength="1000"
         placeholder="Text comment..."
         value={commentText}
         onChange={handleTextareaChange}
         onKeyDown={handleKeyDown}
+        data-html2canvas-ignore="true"
       ></textarea>
     </div>
   );
