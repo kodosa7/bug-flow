@@ -2,5 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap');
 
 @tailwind base;
+/* @layer base {...} is html2canvas library bad font rendering bugfix */
+@layer base {
+    img {
+        @apply inline-block;
+    }
+}
 @tailwind components;
 @tailwind utilities;
