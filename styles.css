@@ -1,0 +1,107 @@
+body {
+    background-color: #111827;
+}
+
+.add-icon {
+    /* same like #a0a0a0 */
+    filter: invert(72%) sepia(11%) saturate(4%) hue-rotate(324deg) brightness(88%) contrast(85%);
+}
+
+.trash-icon {
+    /* white-ish */
+    filter: invert(100%) saturate(100%) hue-rotate(324deg) brightness(88%) contrast(85%);
+}
+
+.pasteButtonActive {
+    color: #000;
+    padding-left: 1.35rem;
+    border-radius: 0.5rem;
+    background-color: #f0f0f0;
+    text-shadow: #808080;
+    font-weight: bold;
+    caret-color: transparent;
+    width: max-content;
+}    
+
+.pasteButtonInactive {
+    width: max-content;
+}
+
+img {
+    border-radius: .5rem;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-template-rows: auto auto auto;
+    gap: 10px 10px;
+    grid-template-areas:
+        "counter-container upload-container"
+        ". comment-container"
+        ". buttons-container";
+}
+
+.counter-container {
+    grid-area: counter-container;
+}
+
+.upload-container {
+    grid-area: upload-container;
+}
+
+.comment-container {
+    grid-area: comment-container;
+}
+
+.buttons-container {
+    grid-area: buttons-container;
+    display: flex;
+    flex-direction: row;
+}
+
+/* if less than 770px */
+/* @media (max-width: 770px) {
+    .upload-container {
+        grid-area: upload-container;
+        max-width: calc(70vw - 5%);
+        overflow: hidden;
+        max-height: 100%;
+    } 
+    .upload-container img {
+        width: 100%;
+        object-fit: contain;
+    }
+} */
+
+.text-input {
+    /* needed instead of "width: 100%;" to get "mr-5" working in this element */
+    width: calc(100% - 1.25rem); 
+}
+
+.button-animation:active {
+    transform: translateY(2px);
+}
+
+
+@keyframes moveUpAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+}
+  
+.copied-text {
+    position: relative;
+    height: 0;
+    font-weight: 900;
+    font-size: larger;
+    left: 4.5rem;
+    animation: moveUpAnimation .75s ease-in-out;
+    animation-iteration-count: 1;
+    color: #fff;
+}  
