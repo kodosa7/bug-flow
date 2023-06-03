@@ -1,6 +1,7 @@
 import { useState } from "react";
 import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
+import Comment from "./Comment"
 
 export default function Buttons({ handleAddNextStep, isImagePasted }) {
   const [isCopied, setIsCopied] = useState(false);
@@ -9,7 +10,7 @@ export default function Buttons({ handleAddNextStep, isImagePasted }) {
     setIsCopied(true);
 
     try {
-      const canvas = await html2canvas(document.body);
+      const canvas = await html2canvas(document.getElementById("render"));
       const dataUrl = canvas.toDataURL("image/png");
       const img = await fetch(dataUrl);
       const imgBlob = await img.blob();
@@ -24,13 +25,13 @@ export default function Buttons({ handleAddNextStep, isImagePasted }) {
 
     setTimeout(() => {
       setIsCopied(false);
-    }, 375);
+    }, 370);
   };
 
   const handleExportClick = async () => {
-    const canvas = await html2canvas(document.body);
+    const canvas = await html2canvas(document.getElementById("render"));
     const dataUrl = canvas.toDataURL("image/png");
-    downloadjs(dataUrl, "download.png", "image/png");
+    downloadjs(dataUrl, "bugflow.png", "image/png");
   };
 
   if (!isImagePasted) {
@@ -38,10 +39,12 @@ export default function Buttons({ handleAddNextStep, isImagePasted }) {
   }
 
   return (
-    <div className="buttons-container mb-5">
+    <div
+      className="buttons-container mb-5"
+      >
       <button
         className="button-animation bg-blue-500 hover:bg-blue-700 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded shadow-xl"
-        onClick={handleAddNextStep}
+        onClick={handleAddNextStep}        
       >
         Add Next Step
       </button>

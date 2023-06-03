@@ -6,22 +6,30 @@ const Upload = ({ handleAddNextStep, handleImagePasted, handleDeleteImage, isIma
   const [buttonClass, setButtonClass] = useState("pasteButtonInactive");
   const contentEditableRef = useRef(null);
 
-  const handlePaste = (e) => {
-    const clipboardData = e.clipboardData || window.clipboardData;
-    const items = clipboardData.items;
+const handlePaste = (e) => {
+  const clipboardData = e.clipboardData || window.clipboardData;
+  const items = clipboardData.items;
 
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i];
-      if (item.type.indexOf("image") !== -1) {
-        const file = item.getAsFile();
-        setImage(URL.createObjectURL(file));
-        handleImagePasted(); // Notify Main component that an image is pasted
-        break;
-      } else {
-        break;
-      }
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    if (item.type.indexOf("image") !== -1) {
+      const file = item.getAsFile();
+      setImage(URL.createObjectURL(file));
+      handleImagePasted(); // Notify Main component that an image is pasted
+
+      // Get the width and height of the pasted image
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+      img.onload = function () {
+        console.log("Pasted image width:", this.width);
+        console.log("Pasted image height:", this.height);
+      };
+
+      break;
     }
-  };
+  }
+};
+
 
   const handleClick = () => {
     if (contentEditableRef.current) {
@@ -35,8 +43,8 @@ const Upload = ({ handleAddNextStep, handleImagePasted, handleDeleteImage, isIma
     <>
       {image ? (
         <>
-          <div className="upload-container relative max-w-full">
-            <img src={image} alt="Pasted image" className="max-w-full h-auto mt-5 mr-5 rounded shadow-lg" />
+          <div className="upload-container mr-5">
+              <img src={image} alt="Pasted image" className="mt-5 mr-5 rounded shadow-lg" />
           </div>
           <div className="comment-container">
             <Comment />
