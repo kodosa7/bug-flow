@@ -33,20 +33,62 @@ export default function Main() {
       const remainingSteps = prevSteps.filter((step) => step.id !== stepId);
   
       if (remainingSteps.length === 0) {
-        // If all steps are deleted, reset the app to initial state
+        // If the last remaining step is deleted or there is only one step and it's the first one, reset the app to the initial state
         return [{ id: 1, isImagePasted: false }];
       }
   
-      const updatedSteps = remainingSteps.map((step, index) => ({
-        ...step,
-        id: index < stepId - 1 ? index + 1 : index + 2,
-      }));
+      let updatedSteps;
+  
+      if (stepId === 1) {
+        updatedSteps = remainingSteps.map((step, index) => ({
+          ...step,
+          id: index + 1,
+        }));
+      } else {
+        updatedSteps = remainingSteps.map((step, index) => ({
+          ...step,
+          id: index < stepId - 1 ? index + 1 : index + 2,
+        }));
+      }
   
       return updatedSteps;
     });
   };
   
   
+  const handleRemoveStep = (stepId) => {
+    console.log("steps.length", steps.length);
+    console.log("stepId", stepId);
+
+    if (steps.length === 1) {
+      console.log("setps.length is 1, resetting")
+      setSteps([{ id: 0, isImagePasted: false }]); // Set the initial state
+
+    } else {
+      console.log("steps.length above 1, continuing")
+      handleDeleteStep(stepId);
+    }
+  };
+
+  // was correct
+
+  // const handleDeleteStep = (stepId) => {
+  //   setSteps((prevSteps) => {
+  //     const remainingSteps = prevSteps.filter((step) => step.id !== stepId);
+  
+  //     if (remainingSteps.length === 0) {
+  //       // If all steps are deleted, reset the app to initial state
+  //       return [{ id: 1, isImagePasted: false }];
+  //     }
+  
+  //     const updatedSteps = remainingSteps.map((step, index) => ({
+  //       ...step,
+  //       id: index < stepId - 1 ? index + 1 : index + 2,
+  //     }));
+  
+  //     return updatedSteps;
+  //   });
+  // };
 
   const handleDeleteImage = (stepId) => {
     setSteps((prevSteps) => {
@@ -76,7 +118,7 @@ export default function Main() {
             {step.isImagePasted && (
               <button
                 className="delete-button button-animation py-2 px-4 ml-5 bg-gray-900 text-gray-400 hover:bg-gray-700 transition-all duration-75 font-bold rounded shadow-xl"
-                onClick={() => handleDeleteStep(step.id)}
+                onClick={() => handleRemoveStep(step.id)}
                 data-html2canvas-ignore="true"
               >
                 Remove step
