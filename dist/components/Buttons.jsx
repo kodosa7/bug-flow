@@ -1,37 +1,62 @@
 import { useState } from "react";
 import downloadjs from "downloadjs";
 import html2canvas from "html2canvas";
-import Comment from "./Comment"
 
-export default function Buttons({ handleAddNextStep, isImagePasted }) {
+export default function Buttons({
+  handleAddNextStep,
+  isImagePasted,
+  handleShowTime,
+  handleShowFooter
+}) {
   const [isCopied, setIsCopied] = useState(false);
 
-  const handlePasteClick = async () => {
-    setIsCopied(true);
+  const handlePasteClick = () => {
+    handleShowTime(); // Call the handler to hide the footer
 
-    try {
-      const canvas = await html2canvas(document.getElementById("render"));
-      const dataUrl = canvas.toDataURL("image/png");
-      const img = await fetch(dataUrl);
-      const imgBlob = await img.blob();
-      await navigator.clipboard.write([
-        new ClipboardItem({
-          "image/png": imgBlob,
-        })
-      ]);
-    } catch (err) {
-      console.error(err);
-    }
+    // wait 100ms to render handleShowTime(), then make element capture & paste to clipboard
+    setTimeout(async () => {
+      setIsCopied(true);
 
+      try {
+        const canvas = await html2canvas(document.getElementById("render"));
+        const dataUrl = canvas.toDataURL("image/png");
+        const img = await fetch(dataUrl);
+        const imgBlob = await img.blob();
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "image/png": imgBlob,
+          }),
+        ]);
+      } catch (err) {
+        console.error(err);
+      }
+
+      // wait to finish the animation
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 370);
+    }, 100);
+
+    // wait more than 100ms to hide time again and show footer back
     setTimeout(() => {
-      setIsCopied(false);
-    }, 370);
+      handleShowFooter();
+    }, 150);
   };
 
-  const handleExportClick = async () => {
-    const canvas = await html2canvas(document.getElementById("render"));
-    const dataUrl = canvas.toDataURL("image/png");
-    downloadjs(dataUrl, "bugflow.png", "image/png");
+  const handleExportClick = () => {
+    handleShowTime(); // Call the handler to hide the footer
+    
+    // wait 100ms to render handleShowTime(), then make element capture & save as image
+    setTimeout(async () => {
+      const canvas = await html2canvas(document.getElementById("render"));
+      const dataUrl = canvas.toDataURL("image/png");
+      downloadjs(dataUrl, "bugflow.png", "image/png");
+    }, 100);
+
+    // wait more than 100ms to hide time again and show footer back
+    setTimeout(() => {
+      handleShowFooter();
+    }, 150);
   };
 
   if (!isImagePasted) {
@@ -39,12 +64,10 @@ export default function Buttons({ handleAddNextStep, isImagePasted }) {
   }
 
   return (
-    <div
-      className="buttons-container mb-5"
-      >
+    <div className="buttons-container mb-5">
       <button
         className="button-animation bg-blue-500 hover:bg-blue-700 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded shadow-xl"
-        onClick={handleAddNextStep}        
+        onClick={handleAddNextStep}
       >
         Add Next Step
       </button>
@@ -55,11 +78,10 @@ export default function Buttons({ handleAddNextStep, isImagePasted }) {
         <button
           className={`button-animation bg-green-600 hover:bg-green-800 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded ml-5 shadow-xl`}
           onClick={handlePasteClick}
-          >
+        >
           Copy to clipboard
         </button>
       </div>
-
 
       <button
         className="button-animation bg-green-600 hover:bg-green-800 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded ml-5 shadow-xl"
