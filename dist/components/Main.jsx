@@ -55,7 +55,7 @@ export default function Main() {
     });
   };
   
-  
+  // working
   const handleRemoveStep = (stepId) => {
     console.log("steps.length", steps.length);
     console.log("stepId", stepId);
@@ -66,8 +66,10 @@ export default function Main() {
 
     } else {
       console.log("steps.length above 1, continuing")
-      handleDeleteStep(stepId);
-    }
+      setSteps((prevSteps) => {
+        return prevSteps.filter((step) => step.id !== stepId);
+      });
+    };
   };
 
   // was correct
