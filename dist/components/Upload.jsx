@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Comment from "./Comment";
 
-const Upload = ({ handleAddNextStep, handleImagePasted, handleDeleteImage, isImagePasted }) => {
+const Upload = ({ handleImagePasted, handleDeleteImage, isImagePasted }) => {
   const [image, setImage] = useState(null);
   const [buttonClass, setButtonClass] = useState("pasteButtonInactive");
   const contentEditableRef = useRef(null);
@@ -16,16 +16,10 @@ const Upload = ({ handleAddNextStep, handleImagePasted, handleDeleteImage, isIma
         const file = item.getAsFile();
         setImage(URL.createObjectURL(file));
         handleImagePasted(); // Notify Main component that an image is pasted
-
-        // Get the width and height of the pasted image
-        const img = new Image();
-        img.src = URL.createObjectURL(file);
-        img.onload = function () {
-          console.log("Pasted image width:", this.width);
-          console.log("Pasted image height:", this.height);
-        };
-
         break;
+      } else {
+        console.log("Not an image");
+        e.preventDefault();
       }
     }
   };
