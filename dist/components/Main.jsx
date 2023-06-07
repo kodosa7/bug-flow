@@ -9,6 +9,7 @@ export default function Main() {
   const [steps, setSteps] = useState([{ id: 1, isImagePasted: false }]);
   const [isFooterVisible, setIsFooterVisible] = useState(true); // State variable for footer visibility
   const [lastStepId, setLastStepId] = useState(1); // Track the ID of the last step
+  const [isFirstStep, setIsFirstStep] = useState(true); // Track if the first step is present
 
   const handleAddNextStep = () => {
     const newStep = {
@@ -18,6 +19,7 @@ export default function Main() {
     setSteps((prevSteps) => [...prevSteps, newStep]);
     setIsFooterVisible(true); // Show the footer when adding a new step
     setLastStepId((prevLastStepId) => prevLastStepId + 1); // Update the ID of the last step
+    setIsFirstStep(false); // Set isFirstStep to false when adding a step
   };
 
   const handleImagePasted = (stepId) => {
@@ -41,6 +43,13 @@ export default function Main() {
       const updatedSteps = prevSteps.filter((step) => step.id !== stepId);
       return updatedSteps;
     });
+
+    setIsFirstStep((prevIsFirstStep) => {
+      if (prevIsFirstStep && steps.length === 1 && steps[0].id === stepId) {
+        return true;
+      }
+      return prevIsFirstStep;
+    });
   };
 
   const handleDeleteImage = (stepId) => {
@@ -61,6 +70,7 @@ export default function Main() {
     if (steps.length === 0) {
       setIsFooterVisible(true); // Show the footer if there are no steps
       setLastStepId(1); // Reset the last step ID to 1
+      setIsFirstStep(true); // Set isFirstStep to true when there are no steps
     } else if (steps.length === 1) {
       setIsFooterVisible(true); // Show the footer if there's only one step
       setLastStepId(steps[0].id); // Set the last step ID to the current step
@@ -79,6 +89,11 @@ export default function Main() {
   const handleShowFooter = () => {
     setIsFooterVisible(true);
   };
+
+  // if array length === 1 and here's only 1 item in in and Remove step was pressed, refresh the page
+  if (isFirstStep && steps.length === 0) {
+    window.location.reload()
+  }
 
   return (
     <div className="">
@@ -122,3 +137,4 @@ export default function Main() {
     </div>
   );
 }
+

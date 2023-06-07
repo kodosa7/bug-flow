@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Comment() {
   const [commentText, setCommentText] = useState("");
@@ -38,7 +38,7 @@ export default function Comment() {
         className="text-input data bg-gray-700 text-gray-400 placeholder-gray-600 rounded p-3 resize-none font-normal text-lg font-sans shadow-lg border-none outline-none"
         rows="1"
         maxLength="1000"
-        placeholder="Text comment..."
+        placeholder="Add comment..."
         value={commentText}
         onChange={handleTextareaChange}
         onKeyDown={handleKeyDown}
