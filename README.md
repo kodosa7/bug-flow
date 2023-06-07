@@ -5,6 +5,9 @@
 BugFlow is a React web app that allows users creating a visual workflow  
 of bugs and errors they need to share with someone else, e.g. to request help.  
 
+## Screenshot
+![image](https://github.com/kodosa7/bug-flow/assets/57393100/3bc5fead-a2c2-4f61-ae7c-16b38e40f721)
+
 ## How does it work
 The app is waiting for copy/pasted image or screenshot,  
 allows adding text commentary, everything in steps. It's up to the user  
