@@ -66,7 +66,7 @@ export default function Buttons({
   return (
     <div className="buttons-container mb-5">
       <button
-        className="button-animation bg-blue-500 hover:bg-blue-700 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded shadow-xl"
+        className="button button-animation bg-blue-500 hover:bg-blue-700 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded shadow-xl"
         onClick={handleAddNextStep}
       >
         Add Next Step
@@ -76,7 +76,7 @@ export default function Buttons({
         {isCopied && <div className="copied-text">Copied</div>}
 
         <button
-          className={`button-animation bg-green-600 hover:bg-green-800 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded ml-5 shadow-xl`}
+          className={`button button-animation bg-green-600 hover:bg-green-800 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded ml-5 shadow-xl`}
           onClick={handlePasteClick}
         >
           Copy to clipboard
@@ -84,7 +84,7 @@ export default function Buttons({
       </div>
 
       <button
-        className="button-animation bg-green-600 hover:bg-green-800 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded ml-5 shadow-xl"
+        className="button button-animation bg-green-600 hover:bg-green-800 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded ml-5 shadow-xl"
         onClick={handleExportClick}
       >
         Export as PNG
