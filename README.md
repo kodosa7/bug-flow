@@ -1,6 +1,6 @@
 # Dev BugFlow
 ## React project that helps reporting error workflows
-[![Netlify Status](https://api.netlify.com/api/v1/badges/86126b0e-1640-4c04-8f99-21411656cab2/deploy-status)](https://app.netlify.com/sites/astonishing-chimera-f144b4/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/86126b0e-1640-4c04-8f99-21411656cab2/deploy-status)](https://app.netlify.com/sites/devbugflow/deploys)
 
 ## About
 BugFlow is a React web app that allows users creating a visual workflow  
