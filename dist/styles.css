@@ -66,18 +66,60 @@ img {
 }
 
 /* if less than 770px */
-/* @media (max-width: 770px) {
-    .upload-container {
-        grid-area: upload-container;
-        max-width: calc(70vw - 5%);
-        overflow: hidden;
-        max-height: 100%;
-    } 
+@media (max-width: 770px) {
     .upload-container img {
         width: 100%;
         object-fit: contain;
     }
-} */
+
+    .button {
+        font-size: .75rem;
+        width: 95%;
+        margin-bottom: .5rem;
+        margin-left: 0;
+        width: calc(100% - 1.25rem); 
+
+    }
+
+    .buttons-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .remove-button {
+        font-size: .75rem;
+    }
+
+    .text-input,
+    .text-output {
+        font-size: .75rem;
+        padding: .25rem .5rem;
+    }
+
+    .header {
+        font-size: 1.5rem;
+    }
+
+    .footer {
+        font-size: .75rem;
+    }
+
+    .copied-text {
+        position: relative;
+        height: 0;
+        font-weight: 900;
+        font-size: larger;
+        left: 6rem;
+        animation: moveUpAnimation .75s ease-in-out;
+        animation-iteration-count: 1;
+        color: #fff;
+    }
+
+    .logo {
+        height: 1.9rem;
+    }
+}
 
 .text-input {
     /* needed instead of "width: 100%;" to get "mr-5" working in this element */
@@ -109,4 +151,9 @@ img {
     animation: moveUpAnimation .75s ease-in-out;
     animation-iteration-count: 1;
     color: #fff;
-}  
+}
+
+.delete-button {
+    font-size: clamp(.5rem, 1rem, 3rem);
+}
+
