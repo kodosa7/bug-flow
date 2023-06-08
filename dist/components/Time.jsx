@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export default function Time() {
     const [showTime, setShowTime] = useState("");
 
+    // useEfffect needed to get the timestamp
     useEffect(() => {
         const currentTime = new Date();
         setShowTime(currentTime.toLocaleString());

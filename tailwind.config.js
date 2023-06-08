@@ -4,8 +4,6 @@ module.exports = {
     "./dist/**/*.{js,jsx,ts,tsx,html}",
   ],
   theme: {
-    // colors: {
-    // },
     extend: {
      fontFamily: {
         "martel": ["Martel Sans", "sans-serif"],

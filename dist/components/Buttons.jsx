@@ -13,7 +13,7 @@ export default function Buttons({
   const handlePasteClick = () => {
     handleShowTime(); // Call the handler to hide the footer
 
-    // wait 100ms to render handleShowTime(), then make element capture & paste to clipboard
+    // Wait 100ms to render handleShowTime(), then make element capture & paste to clipboard
     setTimeout(async () => {
       setIsCopied(true);
 
@@ -31,13 +31,13 @@ export default function Buttons({
         console.error(err);
       }
 
-      // wait to finish the animation
+      // Wait more to finish the animation
       setTimeout(() => {
         setIsCopied(false);
       }, 370);
     }, 100);
 
-    // wait more than 100ms to hide time again and show footer back
+    // Wait more than 100ms to hide time again and show footer back
     setTimeout(() => {
       handleShowFooter();
     }, 150);
@@ -46,14 +46,14 @@ export default function Buttons({
   const handleExportClick = () => {
     handleShowTime(); // Call the handler to hide the footer
     
-    // wait 100ms to render handleShowTime(), then make element capture & save as image
+    // Wait 100ms to render handleShowTime(), then make element capture & save as image
     setTimeout(async () => {
       const canvas = await html2canvas(document.getElementById("render"));
       const dataUrl = canvas.toDataURL("image/png");
       downloadjs(dataUrl, "bugflow.png", "image/png");
     }, 100);
 
-    // wait more than 100ms to hide time again and show footer back
+    // Wait more than 100ms to hide time again and show footer back
     setTimeout(() => {
       handleShowFooter();
     }, 150);

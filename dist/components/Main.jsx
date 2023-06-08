@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Upload from "./Upload";
 import Counter from "./Counter";
 import Buttons from "./Buttons";
@@ -87,16 +87,16 @@ export default function Main() {
   };
 
   const handleShowFooter = () => {
-    setIsFooterVisible(true);
+    setIsFooterVisible(true); // Show footer again after image is snapshotted to clipboard or saved as PNG
   };
 
-  // if array length === 1 and here's only 1 item in in and Remove step was pressed, refresh the page
+  // If array length === 1 and here's only 1 item in in and Remove step was pressed, refresh the page
   if (isFirstStep && steps.length === 0) {
     window.location.reload()
   }
 
   return (
-    <div className="">
+    <div>
       {steps.map((step, index) => (
         <div key={step.id} className="main-container my-0 mx-auto w-11/12 bg-gray-800 mb-5 rounded">
           <div className="counter-container">

@@ -19,7 +19,7 @@ const Upload = ({ handleImagePasted, handleDeleteImage, isImagePasted }) => {
         break;
       } else {
         console.log("Not an image");
-        e.preventDefault();
+        e.preventDefault(); // If no image is pasted, do nothing
       }
     }
   };
