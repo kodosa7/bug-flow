@@ -24,9 +24,9 @@ copied to the clipboard as one big workflow, being ready to share.
 - To export your flow as a clipbpard copied image, use ``Copy to clipboard`` button.
 - To export your flow as a PNG image to your local disk storage, use ``Save as PNG``  
   button. Image file name is ``bugflow.png``.
-- Removing the first step causes page reload
+- Removing the first step causes page reload.
 
-In the clipboard/saved image, a timestamp is added
+In the clipboard/saved image, a timestamp is added.
 
 ![image](https://github.com/kodosa7/bug-flow/assets/57393100/1741f73d-3ccf-4ef0-81aa-a13f031f793f)
 
@@ -36,5 +36,6 @@ In the clipboard/saved image, a timestamp is added
 - WIP
 
 ## Notes
-Due to html2canvas library limitations, PNG for the Dev BugFlow logo was used  
-instead of SVG. Sorry :-(
+- Due to html2canvas library limitations, PNG for the Dev BugFlow logo was used  
+instead of SVG.
+- Doesn't render correctly in Firefox.
