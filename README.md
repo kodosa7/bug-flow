@@ -38,4 +38,4 @@ In the clipboard/saved image, a timestamp is added.
 ## Notes
 - Due to html2canvas library limitations, PNG for the Dev BugFlow logo was used  
 instead of SVG.
-- Doesn't render correctly in Firefox.
+- Doesn't render correctly in Firefox and Safari.
