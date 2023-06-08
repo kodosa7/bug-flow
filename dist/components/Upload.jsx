@@ -51,7 +51,7 @@ const Upload = ({ handleImagePasted, handleDeleteImage, isImagePasted }) => {
           onPaste={handlePaste}
           onClick={handleClick}
         >
-          <img src="./dist/assets/paste.svg" className="add-icon w-16 h-16" alt="Paste icon" />
+          <img src="/dist/assets/paste.svg" className="add-icon w-16 h-16" alt="Paste icon" />
           Click to Paste
         </div>
       )}
