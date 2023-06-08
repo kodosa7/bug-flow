@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import Comment from "./Comment";
+import pasteLogo from "/dist/assets/paste.svg";
 
 const Upload = ({ handleImagePasted, handleDeleteImage, isImagePasted }) => {
   const [image, setImage] = useState(null);
@@ -51,7 +52,7 @@ const Upload = ({ handleImagePasted, handleDeleteImage, isImagePasted }) => {
           onPaste={handlePaste}
           onClick={handleClick}
         >
-          <img src="/dist/assets/paste.svg" className="add-icon w-16 h-16" alt="Paste icon" />
+          <img src={pasteLogo} className="add-icon w-16 h-16" alt="Paste icon" />
           Click to Paste
         </div>
       )}
