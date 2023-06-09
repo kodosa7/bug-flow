@@ -104,7 +104,7 @@ export default function Main() {
 
             {step.isImagePasted && (
               <button
-                className="remove-button button-animation py-2 px-4 ml-5 w-36 bg-gray-900 text-gray-400 hover:bg-gray-700 transition-all duration-75 font-bold rounded shadow-xl"
+                className="remove-button button-animation py-2 px-3 mt-3 ml-5 w-32 bg-gray-900 text-gray-400 hover:bg-gray-700 transition-all duration-75 font-bold rounded shadow-xl"
                 onClick={() => handleRemoveStep(step.id)}
                 data-html2canvas-ignore="true"
               >
