@@ -578,6 +578,10 @@ img{
   margin-bottom: 1.25rem;
 }
 
+.ml-3{
+  margin-left: 0.75rem;
+}
+
 .ml-4{
   margin-left: 1rem;
 }
@@ -618,6 +622,10 @@ img{
   height: 8rem;
 }
 
+.h-6{
+  height: 1.5rem;
+}
+
 .w-11\/12{
   width: 91.666667%;
 }
@@ -636,6 +644,10 @@ img{
 
 .w-32{
   width: 8rem;
+}
+
+.w-6{
+  width: 1.5rem;
 }
 
 .cursor-pointer{
@@ -750,6 +762,10 @@ img{
 
 .text-center{
   text-align: center;
+}
+
+.align-top{
+  vertical-align: top;
 }
 
 .font-raleway{
@@ -879,6 +895,11 @@ img{
 .hover\:bg-blue-700:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-gray-600:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-gray-700:hover{

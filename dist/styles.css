@@ -2,7 +2,8 @@ body {
     background-color: #111827;
 }
 
-.click-icon {
+.click-icon,
+.paste-icon {
     filter: invert(72%) sepia(11%) saturate(4%) hue-rotate(324deg) brightness(88%) contrast(85%);
     animation: clickAnimation 1.5s ease-in-out infinite;
 }
@@ -10,25 +11,31 @@ body {
 @keyframes clickAnimation {
     0% {
         opacity: .5;
-        /* transform: translateY(0); */
     }
     50% {
         opacity: 1;
-        /* transform: translateY(-60px); */
     }
     100% {
         opacity: .5;
-        /* transform: translateY(0); */
     }
-}
-
-.paste-icon {
-    filter: invert(72%) sepia(11%) saturate(4%) hue-rotate(324deg) brightness(88%) contrast(85%);
 }
 
 .bug-icon {
     filter: invert(32%) sepia(36%) saturate(5698%) hue-rotate(200deg) brightness(102%) contrast(105%);
 }
+
+.up-icon {
+    filter: invert(84%) sepia(3%) saturate(954%) hue-rotate(179deg) brightness(78%) contrast(87%);
+}
+
+.delete-icon {
+    filter: invert(32%) sepia(7%) saturate(1312%) hue-rotate(176deg) brightness(94%) contrast(86%);
+}
+
+.delete-icon:hover {
+    filter: invert(84%) sepia(3%) saturate(954%) hue-rotate(179deg) brightness(78%) contrast(87%);
+}
+
 
 .pasteButtonActive {
     background-color: #f0f0f0;
@@ -126,7 +133,8 @@ img {
     }
 }
 
-.text-input {
+.text-input,
+.text-output {
     /* needed instead of "width: 100%;" to get "mr-5" working in this element */
     width: calc(100% - 1.25rem); 
 }
