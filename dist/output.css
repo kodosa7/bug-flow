@@ -610,6 +610,18 @@ img{
   margin-top: 1.25rem;
 }
 
+.mt-2{
+  margin-top: 0.5rem;
+}
+
+.mt-1{
+  margin-top: 0.25rem;
+}
+
+.mr-1{
+  margin-right: 0.25rem;
+}
+
 .flex{
   display: flex;
 }
@@ -758,6 +770,34 @@ img{
 
 .pb-10{
   padding-bottom: 2.5rem;
+}
+
+.pb-1{
+  padding-bottom: 0.25rem;
+}
+
+.pl-3{
+  padding-left: 0.75rem;
+}
+
+.pr-3{
+  padding-right: 0.75rem;
+}
+
+.pt-3{
+  padding-top: 0.75rem;
+}
+
+.pb-2{
+  padding-bottom: 0.5rem;
+}
+
+.pb-3{
+  padding-bottom: 0.75rem;
+}
+
+.pb-0{
+  padding-bottom: 0px;
 }
 
 .text-center{

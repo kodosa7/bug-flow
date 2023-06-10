@@ -139,6 +139,17 @@ img {
     width: calc(100% - 1.25rem); 
 }
 
+.text-input {
+    padding-bottom: .75rem;
+}
+
+/* firefox hack to get rid of too big bottom padding */
+@-moz-document url-prefix() {
+    .text-input {
+        overflow-x: hidden;
+    }
+}
+
 .button-animation:active {
     transform: translateY(2px);
 }
