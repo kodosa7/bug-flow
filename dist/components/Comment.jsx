@@ -32,11 +32,11 @@ export default function Comment() {
   return (
     <div>
       {submittedComment && (
-        <div className="mb-3 mr-5 p-3 rounded font-semibold text-lg font-sans bg-gray-900 text-gray-200 shadow-lg flex flex-row">
+        <div className="mb-3 mr-5 pl-3 pr-3 pt-3 pb-2 rounded font-semibold text-lg font-sans bg-gray-900 text-gray-200 shadow-lg flex flex-row">
           <div className="text-output">
             {submittedComment}
           </div>
-          <div className="align-top">
+          <div className="align-top mt-1 mr-1">
             <button className="delete-icon button-animation transition-all duration-75 shadow-xl" data-html2canvas-ignore="true">
               <img className="w-6 h-6 ml-3 flex" src={deleteIcon} />
             </button>
