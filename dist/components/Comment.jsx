@@ -24,10 +24,19 @@ export default function Comment() {
   };
 
   const addComment = () => {
-    console.log("Comment added:", commentText);
-    setSubmittedComment(commentText);
-    setCommentText("");
+    if (commentText.length !== 0) {
+      setSubmittedComment(commentText);
+      setCommentText("");
+    }
   };
+
+  const handleDeleteTextButton = () => {
+    setSubmittedComment("");
+  }
+
+  const handleSubmitTextButton = () => {
+    addComment();
+  }
 
   return (
     <div>
@@ -37,7 +46,11 @@ export default function Comment() {
             {submittedComment}
           </div>
           <div className="align-top mt-1 mr-1">
-            <button className="delete-icon button-animation transition-all duration-75 shadow-xl" data-html2canvas-ignore="true">
+            <button
+              className="delete-icon button-animation transition-all duration-75 shadow-xl"
+              onClick={handleDeleteTextButton}
+              data-html2canvas-ignore="true"
+            >
               <img className="w-6 h-6 ml-3 flex" src={deleteIcon} />
             </button>
           </div>
@@ -55,8 +68,12 @@ export default function Comment() {
           data-html2canvas-ignore="true"
         >
         </textarea>
-        <button className="text-submit-button button-animation ml-3 mr-5 px-4 bg-gray-700 hover:bg-gray-600 transition-all duration-75 font-bold rounded shadow-xl" data-html2canvas-ignore="true" alt="Text submit icon">
-          <img className="up-icon w-6 h-6" src={upIcon} />
+        <button
+          className="text-submit-button button-animation ml-3 mr-5 px-4 bg-gray-700 hover:bg-gray-600 transition-all duration-75 font-bold rounded shadow-xl"
+          data-html2canvas-ignore="true" alt="Text submit icon"
+          onClick={handleSubmitTextButton}
+          >
+            <img className="up-icon w-6 h-6" src={upIcon} />
         </button>
       </div>
     </div>

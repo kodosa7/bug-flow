@@ -28,9 +28,6 @@ const Upload = ({ handleImagePasted, handleDeleteImage, isImagePasted }) => {
   };
 
   const handleClick = () => {
-    console.log("handleClick");
-    console.log("buttonClass", buttonClass);
-
     // if (contentEditableRef.current) {
       const pasteBtn = document.getElementsByClassName("pasteButtonActive");
       pasteBtn.innerHTML = `<div className="font-bold">Paste now</div>`;
