@@ -7,7 +7,7 @@ BugFlow is a web app that allows users creating a visual workflow
 of bugs and errors they need to share with someone else, e.g. to request help.  
 
 ## How does it look like
-![image](https://github.com/kodosa7/bug-flow/assets/57393100/35e04675-bcb6-4229-aced-77fd8cb6041f)
+![image](https://github.com/kodosa7/bug-flow/assets/57393100/b71dd8da-78b0-41cc-a588-2d66e2663371)
 
 ## How does it work
 The app is waiting for copy/pasted image or screenshot,  
