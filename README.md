@@ -17,7 +17,7 @@ added screenshots and text captions are processed for export as an image either 
 a picture automatically copied in the clipboard as one big workflow, being ready to share  
 as a screenshot on popular social platforms like Slack or Discord.
 
-[![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdlZGUwYjB2czNoeXY2cGxwcjRtaTRtaW1hNHB5cmkzaW5pNnEydSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AqQcmni5d5bLPXdgnv/giphy.gif)]
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdlZGUwYjB2czNoeXY2cGxwcjRtaTRtaW1hNHB5cmkzaW5pNnEydSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AqQcmni5d5bLPXdgnv/giphy.gif)
 
 ## Buttons
 - Any flow item can be removed with the ``Remove step`` button.
