@@ -102,6 +102,7 @@ export default function Main() {
           <div className="counter-container">
             <Counter counter={index + 1} />
 
+            {/* if the imahe s pasted, show Remove step button */}
             {step.isImagePasted && (
               <button
                 className="remove-button button-animation py-2 px-3 mt-3 ml-5 w-32 bg-gray-900 text-gray-400 hover:bg-gray-700 transition-all duration-75 font-bold rounded shadow-xl"
@@ -133,8 +134,8 @@ export default function Main() {
           )}
         </div>
       ))}
+      {/* show Footer or Time */}
       {isFooterVisible ? <Footer /> : <Time />}
     </div>
   );
 }
-

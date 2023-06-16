@@ -6,6 +6,7 @@ body {
 .paste-icon {
     filter: invert(72%) sepia(11%) saturate(4%) hue-rotate(324deg) brightness(88%) contrast(85%);
     animation: clickAnimation 1.5s ease-in-out infinite;
+    height: 3.3rem;
 }
 
 @keyframes clickAnimation {
@@ -77,6 +78,16 @@ img {
     flex-direction: row;
 }
 
+.instructions-click,
+.instructions-paste {
+    font-size: 1.875rem;
+}
+
+.instructions-click-small,
+.instructions-paste-small {
+    font-size: .875rem;
+}
+
 /* if less than 770px */
 @media (max-width: 770px) {
     .upload-container img {
@@ -130,6 +141,21 @@ img {
 
     .logo {
         height: 1.9rem;
+    }
+
+    .click-icon,
+    .paste-icon {
+        height: 3.3rem;
+    }
+
+    .instructions-click,
+    .instructions-paste {
+        font-size: 4vw;
+    }
+
+    .instructions-click-small,
+    .instructions-paste-small {
+        font-size: 2vw;
     }
 }
 
