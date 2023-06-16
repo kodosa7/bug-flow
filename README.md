@@ -32,7 +32,7 @@ as a screenshot on popular social platforms like Slack or Discord.
 
 In the clipboard/saved image, a timestamp is added in the footer area.
 
-![image](https://github.com/kodosa7/bug-flow/assets/57393100/1741f73d-3ccf-4ef0-81aa-a13f031f793f)
+![image](https://github.com/kodosa7/bug-flow/assets/57393100/45462b0b-9ad1-4f8d-9fff-a48cfbbab492)
 
 ## Resources
 - ReactJS and Tailwind, npm
