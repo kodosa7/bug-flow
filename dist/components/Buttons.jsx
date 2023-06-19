@@ -64,7 +64,7 @@ export default function Buttons({
   }
 
   return (
-    <div className="buttons-container mb-5">
+    <div className="buttons-container mb-5 mt-1">
       <button
         className="button button-animation bg-blue-500 hover:bg-blue-700 transition-all duration-75 text-gray-200 font-bold py-2 px-4 rounded shadow-xl"
         onClick={handleAddNextStep}
