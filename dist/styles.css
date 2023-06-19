@@ -97,7 +97,6 @@ img {
 
     .button {
         font-size: .75rem;
-        width: 95%;
         margin-bottom: .5rem;
         margin-left: 0;
         width: calc(100% - 1.25rem); 
@@ -129,14 +128,7 @@ img {
     }
 
     .copied-text {
-        position: relative;
-        height: 0;
-        font-weight: 900;
-        font-size: larger;
-        left: 6rem;
-        animation: moveUpAnimation .75s ease-in-out;
-        animation-iteration-count: 1;
-        color: #fff;
+        display: none;
     }
 
     .logo {
@@ -197,7 +189,7 @@ img {
     height: 0;
     font-weight: 900;
     font-size: larger;
-    left: 4.5rem;
+    left: 4rem;
     animation: moveUpAnimation .75s ease-in-out;
     animation-iteration-count: 1;
     color: #fff;
