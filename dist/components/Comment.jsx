@@ -41,7 +41,7 @@ export default function Comment() {
   return (
     <div>
       {submittedComment && (
-        <div className="mb-3 mr-5 mt-1 pl-3 pr-3 pt-3 pb-2 rounded font-semibold text-lg font-sans bg-gray-900 text-gray-200 shadow-lg flex flex-row">
+        <div className="mb-2 mr-5 mt-1 pl-3 pr-3 pt-3 pb-2 rounded font-semibold text-lg font-sans bg-gray-900 text-gray-200 shadow-lg flex flex-row">
           <div className="text-output">
             {submittedComment}
           </div>
@@ -58,7 +58,7 @@ export default function Comment() {
       )}
       <div className="flex flex-row">
         <textarea
-          className="text-input data bg-gray-700 text-gray-400 placeholder-gray-600 rounded pt-3 pl-3 pr-3 resize-none font-normal text-lg font-sans shadow-lg border-none outline-none"
+          className="text-input data bg-gray-700 text-gray-400 placeholder-gray-600 mt-1 rounded pt-3 pl-3 pr-3 resize-none font-normal text-lg font-sans shadow-lg border-none outline-none"
           rows="1"
           maxLength="1000"
           placeholder="Add comment..."
@@ -69,7 +69,7 @@ export default function Comment() {
         >
         </textarea>
         <button
-          className="text-submit-button button-animation ml-3 mr-5 px-4 bg-gray-700 hover:bg-gray-600 transition-all duration-75 font-bold rounded shadow-xl"
+          className="text-submit-button button-animation ml-3 mr-5 mt-1 px-4 bg-gray-700 hover:bg-gray-600 transition-all duration-75 font-bold rounded shadow-xl"
           data-html2canvas-ignore="true" alt="Text submit icon"
           onClick={handleSubmitTextButton}
           >
